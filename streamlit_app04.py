@@ -16,14 +16,18 @@ if "messages" not in st.session_state:
 # on_changeイベントで呼び出される関数
 def communicate():
     all_msg = st.session_state["messages"] #過去のやり取りをセッションから取得
+    
     user_msg = {"role": "user", "content": st.session_state["user_input"]} # テキストボックス内文字列でJson形式作成
     all_msg.append(user_msg) #今回のチャット内容をやり取りの末尾に追加
+    
     response = openai.ChatCompletion.create(
         model = "gpt-3.5-turbo",
         messages = all_msg
     )
+    
     bot_msg = response["choices"][0]["message"]
     all_msg.append(bot_msg)
+    
     st.session_state["user_input"] = ""  # 入力欄を消去
 
 
