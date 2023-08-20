@@ -21,7 +21,7 @@ def communicate():
         messages = all_msg
     )
     bot_msg = response["choices"][0]["message"]
-    messages.append(bot_msg)
+    all_msg.append(bot_msg)
     st.session_state["user_input"] = ""  # 入力欄を消去
 
 
