@@ -5,5 +5,6 @@ import streamlit as st
 st.title("My AI Assistant")
 st.write("ChatGPT APIを使ったチャットボットです。")
 
-st.text_input("メッセージを入力してください。")
+user_input = st.text_input("メッセージを入力してください。")
 
+st.write(user_input)
