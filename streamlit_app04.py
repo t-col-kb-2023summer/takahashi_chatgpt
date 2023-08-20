@@ -36,6 +36,7 @@ st.title("My AI Assistant")
 st.write("ChatGPT APIを使ったチャットボットです。")
 
 st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+
 if st.session_state["messages"]:
     all_msg = st.session_state["messages"]
 
