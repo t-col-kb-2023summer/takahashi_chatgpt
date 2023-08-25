@@ -6,12 +6,17 @@ openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 role_system = st.secrets.ChatSettings.role_system
 message_max = st.secrets.ChatSettings.message_max
 
-
 # st.session_stateを使いメッセージのやりとりを保存
-if "messages" not in st.session_state:
+# if "user_role" not in st.session_state: 
+#     role_input = ""
+# else
+#     role_input = st.session_state[user_role]
+if "messages" not in st.session_state and "user_role" in st.session_state:
     st.session_state["messages"] = [
-        {"role": "system", "content": role_system}
+        {"role": "system", "content": st.session_state[user_role]}
         ]
+# elif "messages" not in st.session_state and "user_role" not in st.session_state:
+#     st.session_state["role": "system", "content": ""]
 if "messages_len" not in st.session_state:
     st.session_state["messages_len"] = 0
 if "total_tokens" not in st.session_state:
@@ -57,6 +62,7 @@ st.title("My AI Assistant")
 st.write("ChatGPT APIを使ったチャットボットです。")
 display_tokens()
 
+role_input = st.text_input("ロールを入力してください.", key="user_role")
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
