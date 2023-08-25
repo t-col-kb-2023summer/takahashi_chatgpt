@@ -62,7 +62,7 @@ st.title("My AI Assistant")
 st.write("ChatGPT APIを使ったチャットボットです。")
 display_tokens()
 
-role_input = st.text_input("ロールを入力してください.", key="user_role")
+role_input = st.text_input("ロールを入力してください.", key="user_role", on_change=communicate)
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
