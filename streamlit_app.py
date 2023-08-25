@@ -17,7 +17,7 @@ if "user_role" not in st.session_state:
 if "messages" not in st.session_state and "user_role" in st.session_state:
     st.session_state["messages"] = [
         {"role": "system", "content": st.session_state[user_role]}
-#         ]
+      ]
 # elif "messages" not in st.session_state and "user_role" not in st.session_state:
 #     st.session_state["role": "system", "content": ""]
 if "messages_len" not in st.session_state:
